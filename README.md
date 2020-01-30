@@ -1,1 +1,4 @@
-[![Demo CountPages alpha](https://share.gifyoutube.com/KzB6Gb.gif)](https://www.youtube.com/watch?v=ek1j272iAmc)
+React Native
+Animation w/ shared element to a screen of a stack navigator
+
+[![Demo CountPages alpha](http://www.giphy.com/gifs/dyjAo7BAeAaJQtYknJ)](http://www.giphy.com/gifs/dyjAo7BAeAaJQtYknJ)
