@@ -1,4 +1,4 @@
 React Native
 Animation w/ shared element to a screen of a stack navigator
 
-[![Demo CountPages alpha](http://www.giphy.com/gifs/dyjAo7BAeAaJQtYknJ)](http://www.giphy.com/gifs/dyjAo7BAeAaJQtYknJ)
+[![Demo CountPages alpha](https://i.imgur.com/EuCM3wu.mp4)](https://i.imgur.com/EuCM3wu.mp4)
