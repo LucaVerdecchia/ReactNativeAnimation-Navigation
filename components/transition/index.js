@@ -2,8 +2,9 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable keyword-spacing */
 import React, { useState, useEffect } from 'react';
-import { Animated } from 'react-native';
-import { screenWidth, screenHeight } from '../../utils/metrics';
+import { Animated, StatusBar } from 'react-native';
+import { screenWidth, screenHeight, notchHeight } from '../../utils/metrics';
+
 
 export default function Transition({ image, position, callback }) {
     const [pageY] = useState(new Animated.Value(position.pageY));
@@ -14,9 +15,9 @@ export default function Transition({ image, position, callback }) {
     const bottomHeightDest = (screenHeight - position.height);
 
     useEffect(() => {
-        if(position.state === 'animateIn'){
+        if (position.state === 'animateIn') {
             Animated.timing(pageY, {
-                toValue: 0,
+                toValue: notchHeight,
                 duration: 1000,
             }).start();
             Animated.timing(pageX, {
@@ -35,12 +36,12 @@ export default function Transition({ image, position, callback }) {
                 toValue: bottomHeightDest,
                 duration: 1000,
             }).start((animation) => {
-                if(animation.finished){
+                if (animation.finished) {
                     callback();
                 }
             });
         }
-        else{
+        else {
             Animated.timing(pageY, {
                 toValue: position.pageY,
                 duration: 1000,
@@ -61,7 +62,7 @@ export default function Transition({ image, position, callback }) {
                 toValue: 0,
                 duration: 1000,
             }).start((animation) => {
-                if(animation.finished){
+                if (animation.finished) {
                     callback();
                 }
             });
@@ -82,7 +83,7 @@ export default function Transition({ image, position, callback }) {
                     width: '100%',
                     height: position.height,
                 }} />
-             <Animated.View style={{height: bottomHeight, width: '100%', backgroundColor: '#f2f2f2'}}/>
+            <Animated.View style={{ height: bottomHeight, width: '100%', backgroundColor: '#f2f2f2' }} />
         </Animated.View>
     );
 }

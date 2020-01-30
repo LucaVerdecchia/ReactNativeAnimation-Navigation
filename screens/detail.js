@@ -11,26 +11,13 @@ export default function Detail({ route }) {
     const [opacity] = useState(new Animated.Value(1));
     const [topRadius] = useState(new Animated.Value(0));
     const [axisY] = useState(new Animated.Value(0));
-    const [scaleValue] = useState(new Animated.Value(1));
 
     const panResponder = PanResponder.create({
-        onStartShouldSetPanResponder: (evt, gestureState) => {
-            const heightMoved = evt.nativeEvent.pageY < Math.floor(screenHeight * 0.25);
-            Animated.timing(topRadius, {
-                toValue: 30,
-                duration: 1000,
-            }).start();
-            Animated.timing(scaleValue, {
-                toValue: 0.95,
-                duration: 300,
-                useNativeDriver: true,
-            }).start();
-            return heightMoved;
-        },
+        onStartShouldSetPanResponder: (evt, gestureState) => { return true; },
 
         onPanResponderMove: (evt, gestureState) => {
             Animated.timing(axisY, {
-                toValue: gestureState.moveY,
+                toValue: gestureState.dy,
                 duration: 1,
                 useNativeDriver: true,
             }).start();
@@ -38,7 +25,7 @@ export default function Detail({ route }) {
 
         onPanResponderTerminationRequest: (evt, gestureState) => true,
         onPanResponderRelease: (evt, gestureState) => {
-            if (Math.floor(gestureState.moveY) >= screenHeight / 3) {
+            if (Math.floor(gestureState.dy) >= screenHeight / 4) {
                 Animated.timing(opacity, {
                     toValue: 0,
                     duration: 400,
@@ -55,12 +42,6 @@ export default function Detail({ route }) {
                 Animated.timing(topRadius, {
                     toValue: 0,
                     duration: 700,
-                }).start();
-                Animated.timing(scaleValue, {
-                    toValue: 1,
-                    duration: 1000,
-                    easing: Easing.bezier(.17,1.23,1,1),
-                    useNativeDriver: true,
                 }).start();
               }
         },
@@ -80,7 +61,7 @@ export default function Detail({ route }) {
         <SafeAreaView style={styles.container}>
             <Animated.View {...panResponder.panHandlers} style={{
                 opacity: opacity,
-                transform: [{ translateY: axisY }, { scale: scaleValue }]}}>
+                transform: [{ translateY: axisY }]}}>
                 <Animated.Image source={{ uri: image.source.uri }} style={[styles.image, { height: image.height / 2, borderTopLeftRadius: topRadius, borderTopRightRadius: topRadius }]} />
                 <Animated.View style={[styles.bottomView]}>
                     <Animated.Text style={[styles.heading, { opacity }]}>Breanna Johnson</Animated.Text>

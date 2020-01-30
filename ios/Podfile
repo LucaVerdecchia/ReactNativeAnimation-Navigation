@@ -34,6 +34,8 @@ target 'navigationanimate_next' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
+  pod 'react-native-safe-area', :path => '../node_modules/react-native-safe-area'
+
   target 'navigationanimate_nextTests' do
     inherit! :search_paths
     # Pods for testing

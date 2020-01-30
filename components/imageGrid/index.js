@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {useRef, useState} from 'react';
-import {Text, SafeAreaView, StyleSheet, View, Animated} from 'react-native';
+import {SafeAreaView, StyleSheet, View, Animated} from 'react-native';
 import images from '../../src/images';
 import ImageButton from '../image';
 import Transition from '../transition';
